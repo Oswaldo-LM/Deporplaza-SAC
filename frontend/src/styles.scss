@@ -1,0 +1,300 @@
+@import "styles/variables";
+
+/* Mantenemos el naranja como color principal para botones */
+$success: #FF9800;
+
+@import "bootstrap/scss/bootstrap";
+@import "bootstrap-icons/font/bootstrap-icons.css";
+@import "variables";
+
+/* =========================================================
+   DESIGN TOKENS — DeporPlaza
+   ========================================================= */
+:root {
+  /* Marca */
+  --dp-orange: #FF8A00;
+  --dp-orange-2: #FF9F1C;
+  --dp-orange-dark: #E67A00;
+  --dp-orange-soft: rgba(255, 138, 0, 0.1);
+
+  /* Azules */
+  --dp-navy: #111D32;
+  --dp-navy-2: #17263E;
+
+  /* Neutros */
+  --dp-white: #FFFFFF;
+  --dp-bg: #E3E9F2;
+  --dp-bg-deep: #C9D3E3;
+  --dp-muted: #778399;
+  --dp-border: rgba(17, 29, 50, 0.08);
+
+  /* Estado */
+  --dp-green: #168653;
+
+  /* Radios */
+  --dp-radius-sm: 10px;
+  --dp-radius: 16px;
+  --dp-radius-lg: 24px;
+  --dp-radius-pill: 999px;
+
+  /* Sombras */
+  --dp-shadow-sm: 0 1px 2px rgba(17, 29, 50, 0.06), 0 2px 8px rgba(17, 29, 50, 0.04);
+  --dp-shadow: 0 8px 24px rgba(17, 29, 50, 0.08);
+  --dp-shadow-lg: 0 20px 48px rgba(17, 29, 50, 0.16);
+  --dp-shadow-orange: 0 8px 20px rgba(255, 138, 0, 0.32);
+
+  /* Movimiento */
+  --dp-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --dp-fast: 180ms;
+  --dp-base: 300ms;
+  --dp-slow: 600ms;
+
+  /* Tipografía */
+  --dp-font: "Plus Jakarta Sans", "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+/* =========================================================
+   BASE
+   ========================================================= */
+html {
+  scroll-behavior: smooth;
+}
+
+html, body {
+  min-height: 100%;
+  background-color: var(--dp-bg);
+}
+
+body {
+  margin: 0;
+  font-family: var(--dp-font);
+  color: var(--dp-navy-2);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--dp-font);
+  color: var(--dp-navy);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+}
+
+p {
+  line-height: 1.65;
+}
+
+::selection {
+  background: var(--dp-orange);
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 3px solid rgba(255, 138, 0, 0.45);
+  outline-offset: 2px;
+}
+
+/* =========================================================
+   TARJETAS
+   ========================================================= */
+.card {
+  box-shadow: var(--dp-shadow-sm);
+  border: 1px solid var(--dp-border) !important;
+  border-radius: var(--dp-radius);
+  transition: box-shadow var(--dp-base) var(--dp-ease),
+              transform var(--dp-base) var(--dp-ease);
+}
+
+/* =========================================================
+   BOTONES
+   ========================================================= */
+.btn {
+  font-weight: 700;
+  border-radius: var(--dp-radius-sm);
+  letter-spacing: 0.01em;
+  transition: transform var(--dp-fast) var(--dp-ease),
+              box-shadow var(--dp-base) var(--dp-ease),
+              background-color var(--dp-base) var(--dp-ease),
+              border-color var(--dp-base) var(--dp-ease),
+              color var(--dp-base) var(--dp-ease);
+
+  &:active {
+    transform: scale(0.97);
+  }
+}
+
+.btn-primary {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: var(--dp-orange);
+  --bs-btn-border-color: var(--dp-orange);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: var(--dp-orange-dark);
+  --bs-btn-hover-border-color: var(--dp-orange-dark);
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: var(--dp-orange-dark);
+  --bs-btn-active-border-color: var(--dp-orange-dark);
+  --bs-btn-focus-shadow-rgb: 255, 138, 0;
+  --bs-btn-disabled-bg: var(--dp-orange);
+  --bs-btn-disabled-border-color: var(--dp-orange);
+
+  &:hover {
+    box-shadow: var(--dp-shadow-orange);
+    transform: translateY(-2px);
+  }
+}
+
+.btn-outline-primary {
+  --bs-btn-color: var(--dp-orange-dark);
+  --bs-btn-border-color: var(--dp-orange);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: var(--dp-orange);
+  --bs-btn-hover-border-color: var(--dp-orange);
+  --bs-btn-active-bg: var(--dp-orange-dark);
+  --bs-btn-active-border-color: var(--dp-orange-dark);
+  --bs-btn-active-color: #fff;
+}
+
+.btn-success {
+  background-color: var(--dp-orange) !important;
+  border-color: var(--dp-orange) !important;
+  color: #fff !important;
+}
+
+.btn-success:hover {
+  background-color: var(--dp-orange-dark) !important;
+  border-color: var(--dp-orange-dark) !important;
+  box-shadow: var(--dp-shadow-orange) !important;
+  transform: translateY(-2px);
+}
+
+/* =========================================================
+   FORMULARIOS
+   ========================================================= */
+.form-control,
+.form-select {
+  border-radius: var(--dp-radius-sm);
+  border-color: rgba(17, 29, 50, 0.14);
+  padding: 0.7rem 0.95rem;
+  transition: border-color var(--dp-fast) ease, box-shadow var(--dp-fast) ease;
+
+  &:focus {
+    border-color: var(--dp-orange);
+    box-shadow: 0 0 0 4px rgba(255, 138, 0, 0.15);
+  }
+}
+
+/* =========================================================
+   BADGES / ESTADOS
+   ========================================================= */
+.badge {
+  padding: 0.5rem 0.85rem;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.5px;
+}
+
+/* Verde para ACTIVA */
+.bg-success, .text-bg-success {
+  background-color: #dcfce7 !important;
+  color: #147a3b !important;
+  border: 1px solid #bbf7d0 !important;
+}
+
+/* Rojo para INACTIVA */
+.bg-danger, .text-bg-danger {
+  background-color: #fee2e2 !important;
+  color: #810e0e !important;
+  border: 1px solid #fecaca !important;
+}
+
+/* Amarillo para MANTENIMIENTO */
+.bg-warning, .text-bg-warning {
+  background-color: #fef9c3 !important;
+  color: #be610a !important;
+  border: 1px solid #fef08a !important;
+}
+
+/* =========================================================
+   TABLAS
+   ========================================================= */
+.table {
+  vertical-align: middle;
+
+  th {
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #64748b;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid #e2e8f0;
+    padding: 1rem;
+  }
+
+  td {
+    padding: 1rem;
+    color: #334155;
+    font-weight: 500;
+    border-bottom: 1px solid #f1f5f9;
+  }
+
+  tbody tr {
+    transition: background-color 0.2s ease;
+    &:hover {
+      background-color: #f8fafc;
+    }
+  }
+}
+
+/* =========================================================
+   UTILIDADES DE MARCA Y ANIMACIÓN
+   ========================================================= */
+.dp-eyebrow {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--dp-orange-dark);
+}
+
+.dp-text-muted {
+  color: var(--dp-muted);
+}
+
+/* Se activa con la directiva dpReveal (IntersectionObserver) */
+.dp-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity var(--dp-slow) var(--dp-ease),
+              transform var(--dp-slow) var(--dp-ease);
+  will-change: opacity, transform;
+
+  &.is-visible {
+    opacity: 1;
+    transform: none;
+    will-change: auto;
+  }
+}
+
+@keyframes dp-fade-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .dp-reveal {
+    opacity: 1;
+    transform: none;
+  }
+}

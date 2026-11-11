@@ -1,0 +1,325 @@
+<section class="dash">
+
+  <!-- CABECERA -->
+  <header class="dash-head">
+
+    <div>
+      <span class="dash-eyebrow">
+        <i class="bi bi-speedometer2"></i> Panel de control
+      </span>
+
+      <h2 class="dash-title">
+        Dashboard
+      </h2>
+
+      <p class="dash-sub">
+        Resumen de la operación del complejo deportivo.
+      </p>
+    </div>
+
+    <button
+      type="button"
+      class="btn dash-refresh"
+      (click)="cargarDashboard()"
+      [disabled]="cargando"
+    >
+      <i class="bi bi-arrow-clockwise" [class.is-spinning]="cargando"></i>
+      {{ cargando ? 'Actualizando…' : 'Actualizar' }}
+    </button>
+
+  </header>
+
+
+  @if (errorMensaje) {
+
+    <div class="alert alert-danger dash-alert" role="alert">
+      <i class="bi bi-exclamation-triangle-fill"></i>
+      <span>{{ errorMensaje }}</span>
+    </div>
+
+  }
+
+
+  @if (cargando && !resumen) {
+
+    <div class="dash-loading">
+
+      <div class="dash-spinner" role="status"></div>
+
+      <div>
+        Cargando dashboard...
+      </div>
+
+    </div>
+
+  }
+
+
+  @if (resumen) {
+
+    <!-- TARJETAS -->
+
+    <div class="row g-4 mb-4 kpi-row">
+
+      <!-- RESERVAS HOY -->
+      <div class="col-sm-6 col-xl-3">
+        <article class="kpi">
+
+          <span class="kpi__icon kpi__icon--navy">
+            <i class="bi bi-calendar-check-fill"></i>
+          </span>
+
+          <div class="kpi__body">
+            <div class="kpi__label">Reservas de hoy</div>
+
+            <div class="kpi__value">
+              {{ resumen.reservasHoy }}
+            </div>
+
+            <a routerLink="/admin/reservas" class="kpi__link">
+              Ver reservas <i class="bi bi-arrow-right"></i>
+            </a>
+          </div>
+
+        </article>
+      </div>
+
+
+      <!-- CONFIRMADAS -->
+      <div class="col-sm-6 col-xl-3">
+        <article class="kpi">
+
+          <span class="kpi__icon kpi__icon--green">
+            <i class="bi bi-check-circle-fill"></i>
+          </span>
+
+          <div class="kpi__body">
+            <div class="kpi__label">Confirmadas hoy</div>
+
+            <div class="kpi__value">
+              {{ resumen.confirmadasHoy }}
+            </div>
+
+            <a routerLink="/admin/reservas" class="kpi__link">
+              Consultar <i class="bi bi-arrow-right"></i>
+            </a>
+          </div>
+
+        </article>
+      </div>
+
+
+      <!-- PAGOS -->
+      <div class="col-sm-6 col-xl-3">
+        <article class="kpi">
+
+          <span class="kpi__icon kpi__icon--orange">
+            <i class="bi bi-hourglass-split"></i>
+          </span>
+
+          <div class="kpi__body">
+            <div class="kpi__label">Pagos pendientes</div>
+
+            <div class="kpi__value">
+              {{ resumen.pagosPendientes }}
+            </div>
+
+            <a routerLink="/admin/pagos" class="kpi__link">
+              Revisar pagos <i class="bi bi-arrow-right"></i>
+            </a>
+          </div>
+
+        </article>
+      </div>
+
+
+      <!-- INGRESOS -->
+      <div class="col-sm-6 col-xl-3">
+        <article class="kpi">
+
+          <span class="kpi__icon kpi__icon--blue">
+            <i class="bi bi-cash-coin"></i>
+          </span>
+
+          <div class="kpi__body">
+            <div class="kpi__label">Ingresos de hoy</div>
+
+            <div class="kpi__value kpi__value--money">
+              S/ {{ formatearDinero(resumen.ingresosHoy) }}
+            </div>
+
+            <div class="kpi__note">
+              Pagos aprobados
+            </div>
+          </div>
+
+        </article>
+      </div>
+
+    </div>
+
+
+    <!-- ACCIONES RÁPIDAS -->
+
+    <section class="dash-card dash-card--padded mb-4">
+
+      <h5 class="dash-card__title">
+        Acciones rápidas
+      </h5>
+
+      <div class="quick">
+
+        <a routerLink="/admin/reserva-presencial" class="quick__item quick__item--primary">
+          <span class="quick__icon"><i class="bi bi-plus-circle-fill"></i></span>
+          <span class="quick__text">Nueva reserva</span>
+          <i class="bi bi-arrow-right quick__arrow"></i>
+        </a>
+
+        <a routerLink="/admin/pagos" class="quick__item">
+          <span class="quick__icon"><i class="bi bi-wallet2"></i></span>
+          <span class="quick__text">Revisar pagos</span>
+          <i class="bi bi-arrow-right quick__arrow"></i>
+        </a>
+
+        <a routerLink="/admin/reservas" class="quick__item">
+          <span class="quick__icon"><i class="bi bi-calendar-check-fill"></i></span>
+          <span class="quick__text">Consultar reservas</span>
+          <i class="bi bi-arrow-right quick__arrow"></i>
+        </a>
+
+        <a routerLink="/admin/canchas" class="quick__item">
+          <span class="quick__icon"><i class="bi bi-layers-fill"></i></span>
+          <span class="quick__text">Gestionar canchas</span>
+          <i class="bi bi-arrow-right quick__arrow"></i>
+        </a>
+
+      </div>
+
+    </section>
+
+
+    <!-- PRÓXIMAS RESERVAS -->
+
+    <section class="dash-card dash-card--table">
+
+      <div class="dash-card__head">
+
+        <div>
+          <h5 class="dash-card__title mb-0">
+            Próximas reservas
+          </h5>
+
+          <small class="dash-card__sub">
+            Reservas confirmadas pendientes de atención.
+          </small>
+        </div>
+
+        <a routerLink="/admin/reservas" class="btn btn-sm dash-link-btn">
+          Ver todas <i class="bi bi-arrow-right ms-1"></i>
+        </a>
+
+      </div>
+
+
+      @if (resumen.proximasReservas.length === 0) {
+
+        <div class="dash-empty">
+
+          <span class="dash-empty__icon">
+            <i class="bi bi-calendar-x"></i>
+          </span>
+
+          <h6>
+            No hay próximas reservas
+          </h6>
+
+          <p>
+            No existen reservas confirmadas pendientes.
+          </p>
+
+        </div>
+
+      } @else {
+
+        <div class="table-responsive">
+
+          <table class="table table-hover align-middle mb-0 dash-table">
+
+            <thead>
+
+              <tr>
+                <th>Reserva</th>
+                <th>Cliente</th>
+                <th>Sede</th>
+                <th>Cancha</th>
+                <th>Fecha</th>
+                <th>Horario</th>
+                <th>Origen</th>
+                <th class="text-end">Total</th>
+              </tr>
+
+            </thead>
+
+
+            <tbody>
+
+              @for (
+                reserva of resumen.proximasReservas;
+                track reserva.idReserva
+              ) {
+
+                <tr>
+
+                  <td class="cell-id">
+                    #{{ reserva.idReserva }}
+                  </td>
+
+                  <td class="cell-strong">
+                    {{ reserva.nombreCliente }}
+                  </td>
+
+                  <td>
+                    {{ reserva.nombreSede }}
+                  </td>
+
+                  <td>
+                    {{ reserva.nombreCancha }}
+                  </td>
+
+                  <td>
+                    {{ reserva.fechaTurno }}
+                  </td>
+
+                  <td class="cell-nowrap">
+                    {{ formatearHora(reserva.horaInicio) }}
+                    -
+                    {{ formatearHora(reserva.horaFin) }}
+                  </td>
+
+                  <td>
+                    <span class="origin-badge">
+                      {{ reserva.origen }}
+                    </span>
+                  </td>
+
+                  <td class="text-end cell-total">
+                    S/ {{ formatearDinero(reserva.total) }}
+                  </td>
+
+                </tr>
+
+              }
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+      }
+
+    </section>
+
+  }
+
+</section>

@@ -1,0 +1,101 @@
+<div class="admin-container" [class.menu-open]="menuAbierto()">
+
+  <!-- BARRA LATERAL (Sidebar) -->
+  <aside class="sidebar" id="admin-sidebar" aria-label="Menú de administración">
+
+    <div class="brand-header">
+
+      <div class="custom-logo">
+        <img src="/img/logo-sintexto.png" alt="Balón DeporPlaza" class="sidebar-logo-icon">
+
+        <div class="logo-typography">
+          <span class="text-depor">Depor</span>
+          <span class="text-plaza">Plaza</span>
+        </div>
+      </div>
+
+      <h6 class="brand-title mt-4">Administración</h6>
+
+    </div>
+
+    <nav class="nav flex-column gap-1">
+
+      <span class="nav-section">Operación</span>
+
+      <a class="nav-link" routerLink="/admin/dashboard" routerLinkActive="active">
+        <i class="bi bi-grid-1x2-fill"></i><span>Dashboard</span>
+      </a>
+      <a class="nav-link" routerLink="/admin/reservas" routerLinkActive="active">
+        <i class="bi bi-calendar-check-fill"></i><span>Reservas</span>
+      </a>
+      <a class="nav-link" routerLink="/admin/reserva-presencial" routerLinkActive="active">
+        <i class="bi bi-plus-circle-fill"></i><span>Nueva reserva</span>
+      </a>
+      <a class="nav-link" routerLink="/admin/pagos" routerLinkActive="active">
+        <i class="bi bi-wallet2"></i><span>Pagos</span>
+      </a>
+      <a class="nav-link" routerLink="/admin/reportes" routerLinkActive="active">
+        <i class="bi bi-bar-chart-line-fill"></i><span>Reportes</span>
+      </a>
+
+      <span class="nav-section">Configuración</span>
+
+      <a class="nav-link" routerLink="/admin/sedes" routerLinkActive="active">
+        <i class="bi bi-building-fill"></i><span>Sedes</span>
+      </a>
+      <a class="nav-link" routerLink="/admin/canchas" routerLinkActive="active">
+        <i class="bi bi-layers-fill"></i><span>Canchas</span>
+      </a>
+      <a class="nav-link" routerLink="/admin/horarios" routerLinkActive="active">
+        <i class="bi bi-clock-fill"></i><span>Horarios</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <a class="sidebar-site-link" routerLink="/">
+        <i class="bi bi-box-arrow-up-right"></i><span>Ver sitio web</span>
+      </a>
+    </div>
+
+  </aside>
+
+  <!-- Fondo oscuro del menú en móvil -->
+  <div class="sidebar-backdrop" (click)="cerrarMenu()" aria-hidden="true"></div>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <div class="main-content">
+
+    <header class="top-header">
+
+      <div class="top-header__left">
+        <button type="button" class="admin-burger"
+                (click)="alternarMenu()"
+                [attr.aria-expanded]="menuAbierto()"
+                aria-controls="admin-sidebar"
+                [attr.aria-label]="menuAbierto() ? 'Cerrar menú' : 'Abrir menú'">
+          <i class="bi" [class.bi-list]="!menuAbierto()" [class.bi-x-lg]="menuAbierto()"></i>
+        </button>
+
+        <div class="user-info">
+          <span class="user-info__avatar"><i class="bi bi-person-fill"></i></span>
+          <span class="user-info__text">
+            <span class="text-muted me-1">Hola,</span>
+            <strong>{{ usuario?.nombre || 'Administrador' }}</strong>
+          </span>
+        </div>
+      </div>
+
+      <button class="btn-logout" (click)="cerrarSesion()">
+        <i class="bi bi-box-arrow-right"></i>
+        <span class="d-none d-sm-inline">Cerrar sesión</span>
+      </button>
+
+    </header>
+
+    <main class="content-area">
+      <router-outlet />
+    </main>
+
+  </div>
+
+</div>

@@ -1,0 +1,391 @@
+<!-- ============================ HERO ============================ -->
+<section class="hero">
+
+  <div #heroCarousel id="heroCarousel" class="carousel slide carousel-fade hero-carousel" data-bs-ride="carousel">
+
+    <div class="carousel-inner">
+
+      <div class="carousel-item active">
+        <img src="img/banner.png" alt="Cancha DeporPlaza" fetchpriority="high">
+      </div>
+
+      <div class="carousel-item">
+        <img src="img/img-2.png" alt="Equipo DeporPlaza">
+      </div>
+
+      <div class="carousel-item">
+        <img src="img/img-1.jpg" alt="Juego en DeporPlaza">
+      </div>
+
+    </div>
+
+    <div class="hero-nav">
+      <div class="container hero-nav__inner">
+
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+
+        <div class="hero-nav__buttons">
+          <button class="carousel-control-prev hero-arrow" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev" aria-label="Anterior">
+            <i class="bi bi-chevron-left"></i>
+          </button>
+          <button class="carousel-control-next hero-arrow" type="button" data-bs-target="#heroCarousel" data-bs-slide="next" aria-label="Siguiente">
+            <i class="bi bi-chevron-right"></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <div class="hero__content">
+    <div class="container">
+      <div class="hero__copy">
+
+        <span class="hero-badge">
+          <span class="pulse-dot"></span>
+          Reservas deportivas online
+        </span>
+
+        <h1 class="hero__title">
+          El partido comienza <span>aquí.</span>
+        </h1>
+
+        <p class="hero__text">
+          Encuentra tu cancha ideal, consulta la disponibilidad en tiempo real y reserva tu próximo partido en minutos.
+        </p>
+
+        <div class="hero__actions">
+          <a routerLink="/reserva" class="btn btn-primary btn-lg px-4">
+            <i class="bi bi-plus-circle me-2"></i>Reservar ahora
+          </a>
+          <a href="#sedes" class="btn btn-lg hero-ghost px-4">
+            <i class="bi bi-compass me-2"></i>Explorar sedes
+          </a>
+        </div>
+
+        <ul class="hero__perks">
+          <li><i class="bi bi-check-circle-fill"></i> Confirmación inmediata</li>
+          <li><i class="bi bi-check-circle-fill"></i> Comprobante digital</li>
+        </ul>
+
+      </div>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- ======================= FRANJA DE DATOS ======================= -->
+<section class="stats-wrap">
+  <div class="container">
+    <div class="stats" [dpReveal]="0">
+
+      <div class="stat">
+        <span class="stat__icon"><i class="bi bi-geo-alt-fill"></i></span>
+        <div>
+          <div class="stat__value">5</div>
+          <div class="stat__label">Sedes en Lima y Callao</div>
+        </div>
+      </div>
+
+      <div class="stat">
+        <span class="stat__icon"><i class="bi bi-grid-3x3-gap-fill"></i></span>
+        <div>
+          <div class="stat__value">21</div>
+          <div class="stat__label">Canchas en total</div>
+        </div>
+      </div>
+
+      <div class="stat">
+        <span class="stat__icon"><i class="bi bi-tag-fill"></i></span>
+        <div>
+          <div class="stat__value">Desde S/ 75</div>
+          <div class="stat__label">por hora</div>
+        </div>
+      </div>
+
+      <div class="stat">
+        <span class="stat__icon"><i class="bi bi-lightning-charge-fill"></i></span>
+        <div>
+          <div class="stat__value">En vivo</div>
+          <div class="stat__label">Disponibilidad en tiempo real</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================ SEDES ============================ -->
+<section class="sedes" id="sedes">
+  <div class="container">
+
+    <div class="sedes-header" [dpReveal]="0">
+      <div>
+        <span class="eyebrow"><i class="bi bi-grid-3x3-gap"></i> Circuito de canchas Lima &amp; Callao</span>
+        <h2 class="title-xl">Explora todas nuestras sedes</h2>
+        <p class="lead-muted">Instalaciones aprobadas para fútbol 6, fútbol 7, fútbol 11 y torneos corporativos.</p>
+      </div>
+      <span class="sedes-count">
+        <span class="sedes-count-dot"></span> 5 sedes operativas
+      </span>
+    </div>
+
+    <div class="row g-4">
+
+      <!-- Jockey Club -->
+      <div class="col-md-6 col-lg-4" [dpReveal]="0">
+        <article class="sede-card">
+          <div class="sede-media">
+            <img src="img/cancha-jockey.png" alt="DeporPlaza – Jockey Club" loading="lazy">
+            <span class="sede-badge sede-badge-principal">Sede Principal</span>
+            <span class="sede-price">Desde S/ 80 / hr</span>
+            <div class="sede-media-info">
+              <h3>DeporPlaza – Jockey Club</h3>
+              <span><i class="bi bi-geo-alt-fill"></i> Santiago de Surco (C.C. Jockey Plaza)</span>
+            </div>
+          </div>
+          <div class="sede-body">
+            <div class="sede-meta">
+              <span class="sede-sport"><i class="bi bi-dribbble"></i> Fútbol 7 &amp; 11</span>
+              <span class="sede-courts">2 Canchas</span>
+            </div>
+            <p class="sede-desc">Pasto sintético monofilamento 5G, iluminación LED de competencia, cafetería y estacionamiento en el mismo centro comercial.</p>
+            <div class="sede-tags">
+              <span class="sede-tag">42m x 25m</span>
+              <span class="sede-tag">Estacionamiento Gratis</span>
+              <span class="sede-tag">Duchas Pro</span>
+            </div>
+            <a class="sede-btn" routerLink="/disponibilidad" [queryParams]="{ sede: 'jockey-club' }">
+              Ver Canchas &amp; Reservar <i class="bi bi-arrow-right"></i>
+            </a>
+          </div>
+        </article>
+      </div>
+
+      <!-- Campo de Marte -->
+      <div class="col-md-6 col-lg-4" [dpReveal]="90">
+        <article class="sede-card">
+          <div class="sede-media">
+            <img src="img/cancha-campo.png" alt="DeporPlaza – Campo de Marte" loading="lazy">
+            <span class="sede-badge">Sede Jesús María</span>
+            <span class="sede-price">Desde S/ 80 / hr</span>
+            <div class="sede-media-info">
+              <h3>DeporPlaza – Campo de Marte</h3>
+              <span><i class="bi bi-geo-alt-fill"></i> Jesús María / Jirón Nazca</span>
+            </div>
+          </div>
+          <div class="sede-body">
+            <div class="sede-meta">
+              <span class="sede-sport"><i class="bi bi-dribbble"></i> F6, F7, F9, F11 &amp; Losa</span>
+              <span class="sede-courts">9 Canchas</span>
+            </div>
+            <p class="sede-desc">El complejo más grande de Lima Centro. Césped de alto tránsito, losas multideportivas de vóley y futsal, amplias tribunas para hinchadas.</p>
+            <div class="sede-tags">
+              <span class="sede-tag">Canchas Múltiples</span>
+              <span class="sede-tag">Vestuarios VIP</span>
+              <span class="sede-tag">Snack Bar</span>
+            </div>
+            <a class="sede-btn" routerLink="/disponibilidad" [queryParams]="{ sede: 'campo-de-marte' }">
+              Ver Canchas &amp; Reservar <i class="bi bi-arrow-right"></i>
+            </a>
+          </div>
+        </article>
+      </div>
+
+      <!-- J.P. Vizcardo y Guzmán -->
+      <div class="col-md-6 col-lg-4" [dpReveal]="180">
+        <article class="sede-card">
+          <div class="sede-media">
+            <img src="img/cancha-guzman.png" alt="DeporPlaza – J.P. Vizcardo y Guzmán" loading="lazy">
+            <span class="sede-badge">Sede Cercado de Lima</span>
+            <span class="sede-price">Desde S/ 80 / hr</span>
+            <div class="sede-media-info">
+              <h3>DeporPlaza – J.P. Vizcardo y Guzmán</h3>
+              <span><i class="bi bi-geo-alt-fill"></i> Cercado de Lima / Jr. Pedro Gárezon</span>
+            </div>
+          </div>
+          <div class="sede-body">
+            <div class="sede-meta">
+              <span class="sede-sport"><i class="bi bi-dribbble"></i> Fútbol 7 &amp; 8</span>
+              <span class="sede-courts">3 Canchas</span>
+            </div>
+            <p class="sede-desc">Excelente drenaje, iluminación artificial de potencia simétrica y área anexa para calentamiento precompetitivo y estiramiento.</p>
+            <div class="sede-tags">
+              <span class="sede-tag">Zona Calentamiento</span>
+              <span class="sede-tag">Gradas Techadas</span>
+              <span class="sede-tag">Seguridad Privada</span>
+            </div>
+            <a class="sede-btn" routerLink="/disponibilidad" [queryParams]="{ sede: 'vizcardo-guzman' }">
+              Ver Canchas &amp; Reservar <i class="bi bi-arrow-right"></i>
+            </a>
+          </div>
+        </article>
+      </div>
+
+      <!-- Politécnico del Callao -->
+      <div class="col-md-6 col-lg-4" [dpReveal]="0">
+        <article class="sede-card">
+          <div class="sede-media">
+            <img src="img/cancha-callao.png" alt="DeporPlaza – Politécnico del Callao" loading="lazy">
+            <span class="sede-badge">Sede Callao</span>
+            <span class="sede-price">Desde S/ 80 / hr</span>
+            <div class="sede-media-info">
+              <h3>DeporPlaza – Politécnico del Callao</h3>
+              <span><i class="bi bi-geo-alt-fill"></i> Av. Elmer Faucett, Callao</span>
+            </div>
+          </div>
+          <div class="sede-body">
+            <div class="sede-meta">
+              <span class="sede-sport"><i class="bi bi-dribbble"></i> Fútbol 7 reglamentario</span>
+              <span class="sede-courts">4 Canchas</span>
+            </div>
+            <p class="sede-desc">Césped sintético certificado FIFA Quality, cerco perimétrico de alta resistencia, duchas renovadas y fácil acceso desde Colonial y Faucett.</p>
+            <div class="sede-tags">
+              <span class="sede-tag">FIFA Quality</span>
+              <span class="sede-tag">Estacionamiento Interno</span>
+              <span class="sede-tag">Cámaras HD</span>
+            </div>
+            <a class="sede-btn" routerLink="/disponibilidad" [queryParams]="{ sede: 'politecnico-callao' }">
+              Ver Canchas &amp; Reservar <i class="bi bi-arrow-right"></i>
+            </a>
+          </div>
+        </article>
+      </div>
+
+      <!-- Politécnico EE.UU. -->
+      <div class="col-md-6 col-lg-4" [dpReveal]="90">
+        <article class="sede-card">
+          <div class="sede-media">
+            <img src="img/cancha-eeuu.png" alt="DeporPlaza – Politécnico EE.UU." loading="lazy">
+            <span class="sede-badge">Sede Escolar &amp; Comunitaria</span>
+            <span class="sede-price">Desde S/ 75 / hr</span>
+            <div class="sede-media-info">
+              <h3>DeporPlaza – Politécnico EE.UU.</h3>
+              <span><i class="bi bi-geo-alt-fill"></i> Lima Norte / Comas</span>
+            </div>
+          </div>
+          <div class="sede-body">
+            <div class="sede-meta">
+              <span class="sede-sport"><i class="bi bi-dribbble"></i> Fútbol 6 &amp; Fútbol 7</span>
+              <span class="sede-courts">3 Canchas</span>
+            </div>
+            <p class="sede-desc">Canchas múltiples de césped sintético e iluminación LED nocturna. Ideal para academias formativas, pichangas de fin de semana y colegios.</p>
+            <div class="sede-tags">
+              <span class="sede-tag">Ideal Academias</span>
+              <span class="sede-tag">Focos LED 800W</span>
+              <span class="sede-tag">Tarifas Especiales</span>
+            </div>
+            <a class="sede-btn" routerLink="/disponibilidad" [queryParams]="{ sede: 'politecnico-eeuu' }">
+              Ver Canchas &amp; Reservar <i class="bi bi-arrow-right"></i>
+            </a>
+          </div>
+        </article>
+      </div>
+
+      <!-- Tarjeta de llamada a la acción -->
+      <div class="col-md-6 col-lg-4" [dpReveal]="180">
+        <article class="sede-cta">
+          <span class="sede-cta__icon"><i class="bi bi-calendar-check"></i></span>
+          <h3>¿No sabes cuál elegir?</h3>
+          <p>Compara la disponibilidad de todas las sedes y elige tu horario en un solo lugar.</p>
+          <a class="btn btn-primary btn-lg" routerLink="/disponibilidad">
+            Ver disponibilidad <i class="bi bi-arrow-right ms-2"></i>
+          </a>
+        </article>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================ PASOS ============================ -->
+<section class="steps-section">
+  <div class="container">
+
+    <div class="steps-head" [dpReveal]="0">
+      <span class="eyebrow"><i class="bi bi-lightning-charge"></i> Simple y rápido</span>
+      <h2 class="title-xl">¿Cómo funciona el sistema de reserva?</h2>
+      <p class="lead-muted">Olvídate de coordinar por llamadas. Reserva tu partido en 4 simples pasos.</p>
+    </div>
+
+    <div class="row g-4 steps">
+
+      <div class="col-md-6 col-lg-3" [dpReveal]="0">
+        <article class="process-card">
+          <span class="process-watermark">01</span>
+          <span class="process-icon"><i class="bi bi-geo-alt"></i></span>
+          <h3>Elige sede y fecha</h3>
+          <p>Consulta la disponibilidad en vivo y selecciona el día que prefieras.</p>
+        </article>
+      </div>
+
+      <div class="col-md-6 col-lg-3" [dpReveal]="90">
+        <article class="process-card">
+          <span class="process-watermark">02</span>
+          <span class="process-icon"><i class="bi bi-calendar-check"></i></span>
+          <h3>Selecciona un horario</h3>
+          <p>Elige el horario disponible que mejor le quede a tu equipo.</p>
+        </article>
+      </div>
+
+      <div class="col-md-6 col-lg-3" [dpReveal]="180">
+        <article class="process-card">
+          <span class="process-watermark">03</span>
+          <span class="process-icon"><i class="bi bi-person-check"></i></span>
+          <h3>Completa tus datos</h3>
+          <p>Regístrate o continúa como invitado para confirmar tu reserva.</p>
+        </article>
+      </div>
+
+      <div class="col-md-6 col-lg-3" [dpReveal]="270">
+        <article class="process-card">
+          <span class="process-watermark">04</span>
+          <span class="process-icon"><i class="bi bi-receipt"></i></span>
+          <h3>Recibe tu comprobante</h3>
+          <p>Guarda tu comprobante de reserva y preséntalo el día de tu partido.</p>
+        </article>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ======================== CTA WHATSAPP ======================== -->
+<section class="cta-section">
+  <div class="container">
+
+    <div class="contact-cta" [dpReveal]="0">
+      <div class="row align-items-center g-4">
+
+        <div class="col-lg-8">
+          <span class="cta-pill"><i class="bi bi-lightning-charge-fill"></i> Atención inmediata</span>
+          <h2>¿Dudas sobre turnos fijos o torneos?</h2>
+          <p>Resolvemos todas tus dudas de manera inmediata, no dudes en contactarnos.</p>
+        </div>
+
+        <div class="col-lg-4 text-lg-end">
+          <a class="whatsapp-btn" [href]="whatsappUrl" target="_blank" rel="noopener noreferrer">
+            <i class="bi bi-whatsapp"></i>
+            <span>
+              Chatear por WhatsApp
+              <small>{{ whatsappTexto }}</small>
+            </span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>

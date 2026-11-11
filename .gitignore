@@ -1,0 +1,22 @@
+# Dependencies
+node_modules/
+
+
+# Angular
+dist/
+.angular/
+
+
+# Logs
+*.log
+
+
+# IDE
+.vscode/
+.idea/
+*.iml
+
+
+# Sistema operativo
+.DS_Store
+Thumbs.db

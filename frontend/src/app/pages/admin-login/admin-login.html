@@ -1,0 +1,133 @@
+<div class="login-wrapper">
+
+  <!-- Tarjeta de cristal oscuro (Glassmorphism) -->
+  <div class="form-card animate-slide-up">
+
+    <div class="text-center mb-4">
+
+      <div class="brand">
+        <img src="/img/logo-sintexto.png" alt="Balón DeporPlaza" class="brand-logo">
+
+        <div class="brand-text">
+          <span>Depor</span>
+          <span>Plaza</span>
+        </div>
+      </div>
+
+      <h1 class="title-colored">
+        Administración
+      </h1>
+
+      <div class="subtitle-badge mx-auto">
+        <i class="bi bi-shield-lock-fill icon-lock"></i>
+        Acceso exclusivo para personal autorizado
+      </div>
+
+    </div>
+
+    @if (errorMensaje) {
+      <div class="alert alert-danger login-alert animate-fade-in" role="alert">
+        <i class="bi bi-exclamation-triangle-fill"></i>
+        <span>{{ errorMensaje }}</span>
+      </div>
+    }
+
+    <form [formGroup]="form" (ngSubmit)="iniciarSesion()">
+
+      <div class="mb-3 input-group-custom">
+        <label for="email" class="form-label">
+          Correo electrónico
+        </label>
+
+        <div class="field">
+          <i class="bi bi-envelope-fill field__icon"></i>
+
+          <input
+            id="email"
+            type="email"
+            class="form-control custom-input"
+            [class.is-invalid]="form.controls.email.touched && form.controls.email.invalid"
+            formControlName="email"
+            autocomplete="username"
+            placeholder="admin@deporplaza.local"
+            [attr.aria-invalid]="form.controls.email.touched && form.controls.email.invalid"
+            aria-describedby="email-error"
+          >
+        </div>
+
+        @if (form.controls.email.touched && form.controls.email.invalid) {
+          <div id="email-error" class="field-error animate-fade-in">
+            <i class="bi bi-exclamation-circle-fill"></i>
+            Ingresa un correo válido.
+          </div>
+        }
+      </div>
+
+      <div class="mb-4 input-group-custom">
+        <label for="password" class="form-label">
+          Contraseña
+        </label>
+
+        <div class="field">
+          <i class="bi bi-lock-fill field__icon"></i>
+
+          <input
+            #passwordInput
+            id="password"
+            type="password"
+            class="form-control custom-input custom-input--toggle"
+            [class.is-invalid]="form.controls.password.touched && form.controls.password.invalid"
+            formControlName="password"
+            autocomplete="current-password"
+            placeholder="••••••••"
+            [attr.aria-invalid]="form.controls.password.touched && form.controls.password.invalid"
+            aria-describedby="password-error"
+          >
+
+          <button
+            type="button"
+            class="field__toggle"
+            (click)="passwordInput.type = passwordInput.type === 'password' ? 'text' : 'password'"
+            [attr.aria-label]="passwordInput.type === 'password' ? 'Mostrar contraseña' : 'Ocultar contraseña'"
+          >
+            <i
+              class="bi"
+              [class.bi-eye-fill]="passwordInput.type === 'password'"
+              [class.bi-eye-slash-fill]="passwordInput.type !== 'password'"
+            ></i>
+          </button>
+        </div>
+
+        @if (form.controls.password.touched && form.controls.password.invalid) {
+          <div id="password-error" class="field-error animate-fade-in">
+            <i class="bi bi-exclamation-circle-fill"></i>
+            La contraseña es obligatoria.
+          </div>
+        }
+      </div>
+
+      <button
+        type="submit"
+        class="btn-submit w-100"
+        [disabled]="cargando"
+      >
+        @if (cargando) {
+          <span class="spinner-border spinner-border-sm me-2"></span>
+          Iniciando sesión...
+        } @else {
+          Iniciar sesión
+          <i class="bi bi-arrow-right ms-2 btn-submit__arrow"></i>
+        }
+      </button>
+
+    </form>
+
+    <div class="text-center mt-4">
+      <a routerLink="/" class="back-link">
+        <i class="bi bi-arrow-left"></i> Volver al sitio web
+      </a>
+    </div>
+
+  </div>
+
+</div>

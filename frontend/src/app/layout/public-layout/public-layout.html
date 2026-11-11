@@ -1,0 +1,131 @@
+<header class="dp-header" [class.is-scrolled]="scrolled()" [class.menu-open]="menuAbierto()">
+  <div class="container dp-header__inner">
+
+    <a class="dp-brand" routerLink="/" aria-label="DeporPlaza, ir al inicio">
+      <img src="img/logo.png" alt="DeporPlaza" class="dp-brand__logo">
+    </a>
+
+    <button type="button" class="dp-burger"
+            (click)="alternarMenu()"
+            [attr.aria-expanded]="menuAbierto()"
+            aria-controls="dp-nav"
+            [attr.aria-label]="menuAbierto() ? 'Cerrar menú' : 'Abrir menú'">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav id="dp-nav" class="dp-nav" [class.is-open]="menuAbierto()" aria-label="Principal">
+
+      <ul class="dp-nav__links">
+        <li>
+          <a class="dp-link" routerLink="/" routerLinkActive="active"
+             [routerLinkActiveOptions]="{ exact: true }">
+            <i class="bi bi-house-door"></i><span>Inicio</span>
+          </a>
+        </li>
+
+        <li>
+          <a class="dp-link" routerLink="/disponibilidad" routerLinkActive="active">
+            <i class="bi bi-calendar-check"></i><span>Disponibilidad</span>
+          </a>
+        </li>
+
+        @if (authService.esCliente()) {
+          <li>
+            <a class="dp-link" routerLink="/cliente/mis-reservas" routerLinkActive="active">
+              <i class="bi bi-journal-text"></i><span>Mis reservas</span>
+            </a>
+          </li>
+        }
+      </ul>
+
+      <div class="dp-nav__actions">
+
+        @if (authService.esCliente()) {
+          <span class="dp-user">
+            <span class="dp-user__avatar"><i class="bi bi-person-fill"></i></span>
+            <span class="dp-user__name">Hola, <strong>{{ authService.obtenerUsuario()?.nombre }}</strong></span>
+          </span>
+
+          <button type="button" class="btn btn-sm dp-logout"
+                  (click)="cerrarSesionCliente()" aria-label="Cerrar sesión" title="Cerrar sesión">
+            <i class="bi bi-box-arrow-right"></i>
+            <span class="d-lg-none ms-2">Cerrar sesión</span>
+          </button>
+        } @else {
+          <a class="dp-link dp-link--login" routerLink="/cliente/login" routerLinkActive="active">
+            <i class="bi bi-box-arrow-in-right"></i><span>Iniciar sesión</span>
+          </a>
+          <a class="btn btn-outline-primary btn-sm dp-register" routerLink="/cliente/registro">
+            <i class="bi bi-person-plus me-1"></i>Registrarse
+          </a>
+        }
+
+        <a class="btn btn-primary btn-sm dp-cta" routerLink="/reserva">
+          Reservar<i class="bi bi-arrow-right dp-cta__arrow"></i>
+        </a>
+
+      </div>
+    </nav>
+
+  </div>
+</header>
+
+<main class="app-main">
+  <router-outlet />
+</main>
+
+<footer class="dp-footer">
+  <div class="container dp-footer__top">
+    <div class="row g-5">
+
+      <div class="col-lg-4">
+        <a class="dp-footer__brand" routerLink="/">
+          <img src="img/logo.png" alt="" class="dp-footer__logo">
+          <span>Depor<span>Plaza</span></span>
+        </a>
+        <p class="dp-footer__desc">
+          Sistema Web de Control de Turnos y Reservas para tu cancha de fútbol.
+        </p>
+        <a class="btn btn-primary btn-sm mt-2" routerLink="/reserva">
+          <i class="bi bi-calendar-plus me-1"></i>Reservar ahora
+        </a>
+      </div>
+
+      <div class="col-6 col-lg-2 offset-lg-1">
+        <h6 class="dp-footer__title">Enlaces</h6>
+        <ul class="list-unstyled dp-footer__links">
+          <li><a routerLink="/">Inicio</a></li>
+          <li><a routerLink="/disponibilidad">Disponibilidad</a></li>
+          <li><a routerLink="/reserva">Reservar</a></li>
+        </ul>
+      </div>
+
+      <div class="col-6 col-lg-2">
+        <h6 class="dp-footer__title">Horario</h6>
+        <p class="dp-footer__item">
+          <i class="bi bi-clock"></i>
+          <span>Todos los días<br>7:00 a.m. – 9:00 p.m.</span>
+        </p>
+      </div>
+
+      <div class="col-lg-3">
+        <h6 class="dp-footer__title">Contacto</h6>
+        <p class="dp-footer__item">
+          <i class="bi bi-geo-alt"></i>
+          <span>Puerta 4, Jockey Club del Perú - Surco, Av. El Derby S/N, Santiago de Surco 15023</span>
+        </p>
+        <p class="dp-footer__item">
+          <i class="bi bi-telephone"></i>
+          <span>+51 981 324 208</span>
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="dp-footer__bottom">
+    <div class="container">
+      © {{ anio }} DeporPlaza. Todos los derechos reservados.
+    </div>
+  </div>
+</footer>

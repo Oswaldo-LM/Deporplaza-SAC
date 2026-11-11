@@ -1,0 +1,345 @@
+/* Usa los tokens --dp-* definidos en styles.scss (:root) */
+
+.login-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  padding: 1.5rem;
+  /* Imagen optimizada (ideal 1920x1080px, peso menor a 800kb) */
+  background: var(--dp-navy) url('/img/admin-login.jpg') no-repeat center center;
+  background-size: cover;
+}
+
+/* =========================================================
+   TARJETA DE CRISTAL OSCURO
+   ========================================================= */
+.form-card {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 450px;
+  overflow: hidden;
+  padding: 2.75rem 2.5rem 2.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: var(--dp-radius-lg);
+  background-color: rgba(30, 30, 34, 0.6);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.42);
+
+  /* Línea naranja superior */
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--dp-orange), var(--dp-orange-2));
+  }
+}
+
+/* ---------- Marca ---------- */
+.brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 1.1rem;
+}
+
+.brand-logo {
+  height: 64px;
+  width: auto;
+  object-fit: contain;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  line-height: 1.05;
+
+  span {
+    color: #fff;
+    font-size: 1.7rem;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+  }
+}
+
+/* ---------- Títulos ---------- */
+.title-colored {
+  margin: 0 0 0.85rem;
+  color: var(--dp-orange);
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+}
+
+.subtitle-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 6px 14px;
+  border: 1px solid rgba(255, 152, 0, 0.4);
+  border-radius: var(--dp-radius-pill);
+  background-color: rgba(255, 152, 0, 0.15);
+  color: #f8fafc;
+  font-size: 0.75rem;
+  font-weight: 600;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+.icon-lock {
+  flex-shrink: 0;
+  color: var(--dp-orange);
+  font-size: 0.85rem;
+}
+
+/* ---------- Alerta ---------- */
+.login-alert {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1.25rem;
+  border: 1px solid rgba(248, 113, 113, 0.45);
+  border-radius: var(--dp-radius-sm);
+  background-color: rgba(239, 68, 68, 0.18);
+  color: #fecaca;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* =========================================================
+   CAMPOS
+   ========================================================= */
+.input-group-custom {
+  text-align: left;
+
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #f8fafc;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+}
+
+.field {
+  position: relative;
+
+  &__icon {
+    position: absolute;
+    top: 50%;
+    left: 1rem;
+    z-index: 2;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 1rem;
+    pointer-events: none;
+    transition: color var(--dp-fast) ease;
+  }
+
+  &:focus-within &__icon { color: var(--dp-orange); }
+
+  &__toggle {
+    position: absolute;
+    top: 50%;
+    right: 0.4rem;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    transform: translateY(-50%);
+    border: 0;
+    border-radius: 9px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 1.05rem;
+    cursor: pointer;
+    transition: color var(--dp-fast) ease, background-color var(--dp-fast) ease;
+
+    &:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--dp-orange);
+      outline-offset: 1px;
+    }
+  }
+}
+
+.custom-input {
+  width: 100%;
+  min-height: 50px;
+  padding: 0.75rem 1rem 0.75rem 2.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  transition: background-color var(--dp-base) ease,
+              border-color var(--dp-base) ease,
+              box-shadow var(--dp-base) ease;
+
+  &--toggle { padding-right: 3rem; }
+
+  &::placeholder { color: rgba(255, 255, 255, 0.4); }
+
+  &:focus {
+    outline: none;
+    border-color: var(--dp-orange);
+    background-color: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 0 0 3px rgba(255, 152, 0, 0.22);
+    color: #fff;
+  }
+
+  /* Estado inválido (validación visual) */
+  &.is-invalid {
+    border-color: #f87171;
+    background-image: none;
+    box-shadow: 0 0 0 3px rgba(248, 113, 113, 0.18);
+  }
+
+  /* Evita el fondo celeste del autocompletado de Chrome */
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus {
+    -webkit-text-fill-color: #fff;
+    caret-color: #fff;
+    -webkit-box-shadow: 0 0 0 1000px rgba(40, 40, 46, 0.95) inset;
+    transition: background-color 9999s ease-out 0s;
+  }
+}
+
+.field-error {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.4rem;
+  color: #fca5a5;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+/* =========================================================
+   BOTÓN Y ENLACE
+   ========================================================= */
+.btn-submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 52px;
+  margin-top: 0.5rem;
+  border: 0;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--dp-orange), var(--dp-orange-2));
+  color: #fff;
+  font-size: 1.05rem;
+  font-weight: 800;
+  box-shadow: var(--dp-shadow-orange);
+  cursor: pointer;
+  transition: transform var(--dp-fast) var(--dp-ease),
+              box-shadow var(--dp-base) var(--dp-ease),
+              background-color var(--dp-fast) ease;
+
+  &__arrow { transition: transform var(--dp-base) var(--dp-ease); }
+
+  &:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 22px rgba(255, 152, 0, 0.42);
+
+    .btn-submit__arrow { transform: translateX(4px); }
+  }
+
+  &:active:not(:disabled) { transform: scale(0.98); }
+
+  &:focus-visible {
+    outline: 3px solid rgba(255, 255, 255, 0.6);
+    outline-offset: 2px;
+  }
+
+  &:disabled {
+    opacity: 0.75;
+    cursor: not-allowed;
+  }
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #cbd5e1;
+  font-size: 0.93rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color var(--dp-fast) ease;
+
+  i { transition: transform var(--dp-base) var(--dp-ease); }
+
+  &:hover {
+    color: var(--dp-orange-2);
+
+    i { transform: translateX(-4px); }
+  }
+}
+
+/* =========================================================
+   ANIMACIONES
+   ========================================================= */
+.animate-slide-up {
+  animation: slideUp 0.6s var(--dp-ease) both;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease both;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+@media (max-width: 575.98px) {
+  .login-wrapper { padding: 1rem; }
+
+  .form-card { padding: 2.25rem 1.5rem 1.75rem; }
+
+  .brand-logo { height: 56px; }
+
+  .brand-text span { font-size: 1.5rem; }
+}
+
+/* =========================================================
+   MOVIMIENTO REDUCIDO
+   ========================================================= */
+@media (prefers-reduced-motion: reduce) {
+  .animate-slide-up,
+  .animate-fade-in { animation: none; }
+
+  .btn-submit,
+  .btn-submit__arrow,
+  .back-link i,
+  .custom-input,
+  .field__icon,
+  .field__toggle { transition: none; }
+}
